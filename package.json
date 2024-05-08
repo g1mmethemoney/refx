@@ -1,7 +1,7 @@
 {
   "name": "@rbxts/refx",
-  "version": "1.0.0",
-  "description": "<div align=\"center\">\r \t<img src=\"assets/logo.png\" alt=\"RefX\" width=\"175\" />\r \t<br><br><br>\r \t<p>A library for Replicating Visual Effects in Roblox</p>\r \t<a href=\"https://github.com/\"><strong>View docs &rarr;</strong></a>\r   <br><br><br>",
+  "version": "0.0.2",
+  "description": "A library for Replicating Visual Effects in Roblox.",
   "main": "out/init.lua",
   "scripts": {
     "build": "rbxtsc",
