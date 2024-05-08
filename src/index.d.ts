@@ -35,3 +35,6 @@ export declare function VisualEffectDecorator<T extends Constructor<BaseEffect<a
 export declare function Config(
 	attributes: Partial<FunctionAttributes>,
 ): <T extends BaseEffect<any[]>>(ctor: T, methodName: string) => void;
+
+export declare function Register(directory: Instance): void;
+export declare function Start(): void;
