@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/refx",
-  "version": "0.0.2",
+  "version": "0.3.0",
   "description": "A library for Replicating Visual Effects in Roblox.",
   "main": "out/init.lua",
   "scripts": {
@@ -8,8 +8,9 @@
     "watch": "rbxtsc -w",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["refx", "visual effects", "vfx", "replication"],
+  "author": "wAD",
+  "repository": "https://github.com/wad4444/refx",
   "license": "ISC",
   "types": "out/index.d.ts",
   "files": [
