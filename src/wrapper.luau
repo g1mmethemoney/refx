@@ -11,8 +11,7 @@ local wrapper = {}
 
 function wrapper.VisualEffectDecorator(ctor)
 	ctor.new = function(...)
-		logger.assert(runService:IsServer(), `Cannot get effect proxy on client.`)
-		return createProxy(tostring(ctor), ...)
+		return runService:IsServer() and createProxy(tostring(ctor), ...) or createClientProxy(ctor, ...)
 	end
 
 	ctor.locally = function(...)
