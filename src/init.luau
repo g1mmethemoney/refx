@@ -1,3 +1,4 @@
+--!strict
 local exports = require(script.exports)
 table.freeze(exports)
 
@@ -18,6 +19,13 @@ export type EffectFields = {
 	MaxLifetime: number,
 	DisableLeakWarning: boolean,
 	Configuration: { unknown },
+	Destroyed: ReadonlySignal,
+}
+
+export type ReadonlySignal<T = () -> ()> = {
+	Connect: (ReadonlySignal<T>, T) -> RBXScriptConnection,
+	Once: (ReadonlySignal<T>, T) -> RBXScriptConnection,
+	Wait: (ReadonlySignal<T>) -> (),
 }
 
 export type EffectImpl<K, V, T...> = {
@@ -27,12 +35,16 @@ export type EffectImpl<K, V, T...> = {
 	OnDestroy: (Effect<K, V, T...>) -> (),
 	new: (T...) -> ServerProxy<K, V, T...>,
 	locally: (T...) -> ClientProxy<K, V, T...>,
-} & K
+}
 
-export type Effect<K, V, T...> = typeof(setmetatable({} :: EffectFields, {} :: EffectImpl<K, V, T...>)) & V
+-- important note: if you provide something that's not table into K or V type solver will commit suicide
+export type Effect<K, V, T...> =
+	typeof(setmetatable({} :: EffectFields, {} :: EffectImpl<K, V, T...>))
+	& typeof(setmetatable({} :: EffectFields, ({} :: any) :: K))
+	& V
 
 export type FunctionAttributes = {
-	Unreliable: boolean,
+	Unreliable: boolean?,
 }
 
 type refX = {
