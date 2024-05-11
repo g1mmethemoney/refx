@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/refx",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "A library for Replicating Visual Effects in Roblox.",
   "main": "out/init.lua",
   "scripts": {
